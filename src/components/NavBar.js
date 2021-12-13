@@ -1,21 +1,27 @@
 import React from 'react'
-import { AppBar, Toolbar, Typography  } from '@mui/material';
+import { AppBar, Toolbar } from '@mui/material';
 import CartWidget from './CartWidget';
-import ItemListContainer from './ItemListContainer';
+import { Link } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
+const useStyles = makeStyles(theme => ({
+    offset: theme.mixins.toolbar
+}))
 
 const NavBar = () => {
-
+    const classes = useStyles();
     return (
-        
+        <>
             <AppBar>
                 <Toolbar sx={{ justifyContent: 'space-between'}}>
-                    <Typography variant="h5">
-                    <ItemListContainer nombre=" Tienda origin"/>
-                    </Typography>
+                    <Link href="#" color="inherit" variant="h5" underline="none">
+                        Tienda ORIGIN
+                    </Link>
                         <CartWidget/>
                 </Toolbar>
             </AppBar>
+            <div className={classes.offset}></div>
+        </>    
         
     )
 }

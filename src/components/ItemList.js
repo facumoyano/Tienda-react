@@ -14,8 +14,8 @@ const ItemList = () => {
             .then( data => {
                 setTimeout(() => {
                     
+                    setProductos(data)
                 }, 3000);
-                setProductos(data)
             })
     }
 

@@ -7,18 +7,18 @@ const ItemCount = () => {
     const [count, setCount] = useState(1);
     
     function sumar () {
-        if(count >= 1 && count < 10) {
+        if(count < 10) {
             setCount(count + 1)
         }
         
     }
 
     function restar () {
-        if(count > 1 && count <= 10) {
+        if(count > 1) {
             setCount(count - 1)
         }
     }
-    console.log(`el valor del contador es ${count}`)
+    
 
     return (
         <Box sx={{
@@ -33,17 +33,17 @@ const ItemCount = () => {
                 <CardContent>
                     <Button sx={{
                         fontSize: 30
-                    }} onClick={ sumar }>
-                        +
+                    }} onClick={ restar }>
+                        -
                     </Button>
                     <Typography variant='p'>
                         {count}
                     </Typography>
-                    <Button sx={{
-                        fontSize: 30
-                    }} onClick={ restar }>
-                        -
-                    </Button>
+                        <Button sx={{
+                            fontSize: 30
+                        }} onClick={ sumar }>
+                            +
+                        </Button>
                 </CardContent>
             </Card>
         </Box>

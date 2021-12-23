@@ -3,6 +3,7 @@ import React from 'react'
 import { makeStyles } from '@mui/styles'
 import { grey, red } from '@mui/material/colors'
 import { Box } from '@mui/system'
+import ItemList from './ItemList'
 
 
 const useStyle = makeStyles({
@@ -27,6 +28,7 @@ const ItemListContainer = ({ titulo, subtitulo }) => {
             <Typography variant="subtitle1" className={classes.subtitulo} sx={{fontWeight: 'bold'}} >
                 {subtitulo}
             </Typography>
+            <ItemList />
             
         </Box>
     )

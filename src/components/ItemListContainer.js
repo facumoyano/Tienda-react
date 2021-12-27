@@ -18,15 +18,12 @@ const useStyle = makeStyles({
     }
 })
 
-const ItemListContainer = ({ titulo, subtitulo }) => {
+const ItemListContainer = ({ titulo }) => {
     const classes = useStyle()
     return (
-        <Box mt={4}>
+        <Box>
             <Typography variant="h1" className={classes.titulo}>
                 {titulo}
-            </Typography>
-            <Typography variant="subtitle1" className={classes.subtitulo} sx={{fontWeight: 'bold'}} >
-                {subtitulo}
             </Typography>
             <ItemList />
             

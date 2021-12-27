@@ -2,11 +2,13 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import Item from './Item'
 import { Box } from '@mui/system'
+import { CircularProgress } from '@mui/material'
 
 
 const ItemList = () => {
 
     const [productos, setProductos] = useState([])
+    const [spinner, setSpinner] = useState(false)
 
     const getItems = () => {
         const URL = ('../../productos.json')
@@ -16,24 +18,33 @@ const ItemList = () => {
                 setTimeout(() => {
                     
                     setProductos(data)
-                }, 3000);
+                    setSpinner(true)
+                }, 2000);
             })
     }
+    
 
     useEffect( ()=>{
         getItems()
     }, [])
 
     return (
+        <div className='spinner1'>
+        {
+            spinner ?
         <Box sx={{ display: 'flex',
                     justifyContent: 'space-evenly' 
                     }}>
-                        
-            {productos.map(p =>
             
+            {productos.map(p =>
+                
                <Item item={p} key={p.id}></Item>
             )}
         </Box>
+        :
+        <CircularProgress />
+        }
+        </div>
     )
 }
 

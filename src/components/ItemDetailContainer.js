@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button, CircularProgress, Typography } from '@mui/material'
 import React from 'react'
 import ItemCount from './ItemCount'
 import { useParams } from 'react-router-dom'
@@ -8,30 +8,38 @@ const ItemDetailContainer = ( ) => {
     const {id} = useParams();
     
     
-    const [item, setItem] = useState({})
+     const [item, setItem] = useState({})
+     const [spinner, setSpinner] = useState(false)
 
     useEffect( ()=>{
         const getItems = async () => {
             const data = await fetch(`../../productos.json`);
             const prod = await data.json();
-            const filter = prod.filter((product) => product.id == id); 
-            setItem(filter)
+            
+            const filter = prod.find((product) => product.id == id); 
+            setTimeout(() => {
+                    
+                setItem(filter)
+                setSpinner(true)
+            }, 3000);
+            
         }
         getItems();
     }, [id]);
 
-    const producto = item[0];
-    console.log(producto)
-
 
     return (
-        <Box sx={{
-            display: 'flex', 
-            justifyContent: 'space-evenly',
-            my: 5
-        }}>
+        <div  className="spinner">
+        {
+            spinner ? 
+            <Box sx={{
+                display: 'flex', 
+                justifyContent: 'space-evenly',
+                my: 5
+            }}>
+
             <Box>
-                <img  src="https://www.digitalsport.com.ar/files/products/615b30c27a68d-562155-500x500.jpg" alt='asd'/>
+                <img  src={item.imagen} alt='asd'/>
             </Box>
             <Box sx={{
                 display: 'flex',
@@ -43,17 +51,17 @@ const ItemDetailContainer = ( ) => {
                 <Typography variant='h4' sx={{
                     py: 1
                 }}>
-                    {producto.nombre}
+                    {item.nombre}
                 </Typography>
                 <Typography variant='h6' sx={{
                     py: 1
                 }}>
-                    ${producto.precio}
+                    ${item.precio}
                 </Typography>
                 <Typography variant='h6' sx={{
                     py: 0.3
                 }}>
-                    Stock: {producto.stock}
+                    Stock: {item.stock}
                 </Typography>
                 <Button variant='contained' sx={{
                     margin: 1
@@ -70,6 +78,10 @@ const ItemDetailContainer = ( ) => {
             
             
         </Box>
+        :
+        <CircularProgress/>
+        }
+        </div>
     )
 }
 

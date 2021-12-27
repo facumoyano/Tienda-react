@@ -4,6 +4,7 @@
         "titulo": "vulk",
         "nombre": "remera voute vulk",
         "precio": 5000,
+        "stock": 213,
         "imagen": "https://www.digitalsport.com.ar/files/products/615b30c27a68d-562155-500x500.jpg"
     },
     {
@@ -11,6 +12,7 @@
         "titulo": "adidas",
         "nombre": "remera adidas the simpsons",
         "precio": 4000,
+        "stock": 90,
         "imagen": "https://www.digitalsport.com.ar/files/products/613b86b0cbf61-566429-500x500.jpg"
     },
     {
@@ -18,6 +20,7 @@
         "titulo": "puma",
         "nombre": "REMERA FELIPE PANTONE PUMA",
         "precio": 4000,
+        "stock": 70,
         "imagen": "https://www.digitalsport.com.ar/files/products/60be6951ba93b-528703-500x500.jpg"
     }
 ]

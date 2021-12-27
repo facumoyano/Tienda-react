@@ -1,8 +1,9 @@
 import React from 'react'
 import { AppBar, Toolbar } from '@mui/material';
 import CartWidget from './CartWidget';
-import { Link } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
+
 
 const useStyles = makeStyles(theme => ({
     offset: theme.mixins.toolbar
@@ -14,8 +15,8 @@ const NavBar = () => {
         <>
             <AppBar>
                 <Toolbar sx={{ justifyContent: 'space-between'}}>
-                    <Link href="#" color="inherit" variant="h5" underline="none">
-                        Tienda ORIGIN
+                    <Link to="/" variant="h5" className='link'>
+                        TIENDA ORIGIN
                     </Link>
                         <CartWidget/>
                 </Toolbar>

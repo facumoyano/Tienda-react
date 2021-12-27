@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Button, Typography } from '@mui/material'
+import { Box, CardContent, Button, Typography } from '@mui/material'
 import React from 'react'
 import { useState } from 'react';
 
@@ -24,12 +24,9 @@ const ItemCount = () => {
         <Box sx={{
             display: 'flex',
             justifyContent: 'center',
-            p: 5,
-            fontSize: 50
+            fontSize: 30
         }}>
-            <Card variant="outlined" sx={{
-                p: 5
-            }}>
+            
                 <CardContent>
                     <Button sx={{
                         fontSize: 30
@@ -45,7 +42,7 @@ const ItemCount = () => {
                             +
                         </Button>
                 </CardContent>
-            </Card>
+            
         </Box>
     )
 }

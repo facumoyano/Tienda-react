@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Item from './Item'
 import { Box } from '@mui/system'
 
+
 const ItemList = () => {
 
     const [productos, setProductos] = useState([])
@@ -27,7 +28,9 @@ const ItemList = () => {
         <Box sx={{ display: 'flex',
                     justifyContent: 'space-evenly' 
                     }}>
+                        
             {productos.map(p =>
+            
                <Item item={p} key={p.id}></Item>
             )}
         </Box>

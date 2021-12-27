@@ -2,18 +2,27 @@ import React from "react";
 import { ThemeProvider } from "@mui/material";
 import theme from "./temaConfig";
 import NavBar from "./components/NavBar";
-import ItemListContainer from "./components/ItemListContainer";
-import ItemCount from "./components/ItemCount";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import ItemDetailContainer from "./components/ItemDetailContainer";
 
 
 
 function App() {
   return (
+    <BrowserRouter>
     <ThemeProvider theme={ theme }>
       <NavBar />
-      <ItemListContainer titulo="ORIGIN Clothes" subtitulo="La tienda de ropa mas grande de Argentina"/>
-      <ItemCount />
+    <Routes>
+      <Route index path="/" element={<Home />} >
+        
+      </Route>
+      <Route path="/ItemDetail/:id" element={<ItemDetailContainer />}>
+        
+      </Route>
+    </Routes>
     </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

@@ -21,6 +21,7 @@ const ItemList = () => {
                     setSpinner(true)
                 }, 2000);
             })
+            
     }
     
 
@@ -29,11 +30,13 @@ const ItemList = () => {
     }, [])
 
     return (
-        <div className='spinner1'>
+        <div>
         {
             spinner ?
-        <Box sx={{ display: 'flex',
-                    justifyContent: 'space-evenly' 
+        <Box sx={{ display: 'grid',
+                    gridTemplateColumns: '1fr 1fr 1fr',
+                    gap: "30px",
+                    justifyItems: "center" 
                     }}>
             
             {productos.map(p =>
@@ -42,7 +45,10 @@ const ItemList = () => {
             )}
         </Box>
         :
-        <CircularProgress />
+        <div className="spinner1">
+
+            <CircularProgress/>
+        </div>
         }
         </div>
     )

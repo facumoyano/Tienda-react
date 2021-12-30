@@ -2,18 +2,20 @@
     {
         "id": 1,
         "titulo": "vulk",
-        "nombre": "remera voute vulk",
+        "nombre": "REMERA VOUTE VULK",
         "precio": 5000,
         "imagen": "https://www.digitalsport.com.ar/files/products/615b30c27a68d-562155-500x500.jpg",
-        "stock": 230
+        "stock": 40,
+        "categoria": "hombre"
     },
     {
         "id": 2,
         "titulo": "adidas",
-        "nombre": "remera adidas the simpsons",
+        "nombre": "REMERA ADIDAS THE SIMPSONS",
         "precio": 3500,
         "imagen": "https://www.digitalsport.com.ar/files/products/613b86b0cbf61-566429-500x500.jpg",
-        "stock": 90
+        "stock": 90,
+        "categoria": "hombre"
     },
     {
         "id": 3,
@@ -21,6 +23,79 @@
         "nombre": "REMERA FELIPE PANTONE PUMA",
         "precio": 4000,
         "imagen": "https://www.digitalsport.com.ar/files/products/60be6951ba93b-528703-500x500.jpg",
-        "stock": 60
+        "stock": 60,
+        "categoria": "hombre"
+    },
+    {
+        "id": 4,
+        "titulo": "adidas",
+        "nombre": "REMERA TREFOIL ADIDAS",
+        "precio": 5999,
+        "imagen": "https://www.digitalsport.com.ar/files/products/616e9ca06ad54-540418-500x500.jpg",
+        "stock": 230,
+        "categoria": "mujer"
+    },
+    {
+        "id": 5,
+        "titulo": "champion",
+        "nombre": "REMERA CORTA DEPORTIVA CHAMPION",
+        "precio": 4399,
+        "imagen": "https://www.digitalsport.com.ar/files/products/616ecdaa698a5-564758-500x500.jpg",
+        "stock": 20,
+        "categoria": "mujer"
+    },
+    {
+        "id": 6,
+        "titulo": "circle",
+        "nombre": "REMERA CIRCLE LOGO DEPORTIVO CHAMPION",
+        "precio": 4399,
+        "imagen": "https://www.digitalsport.com.ar/files/products/61328b5f862a9-564732-500x500.jpg",
+        "stock": 230,
+        "categoria": "hombre"
+    },
+    {
+        "id": 7,
+        "titulo": "adidas",
+        "nombre": "REMERA ADICOLOR ADIDAS",
+        "precio": 3289,
+        "imagen": "https://www.digitalsport.com.ar/files/products/5f73623fc243b-498183-500x500.jpg",
+        "stock": 64,
+        "categoria": "mujer"
+    },
+    {
+        "id": 8,
+        "titulo": "puma",
+        "nombre": "REMERA PUMA X BRITTO PUMA",
+        "precio": 3540,
+        "imagen": "https://www.digitalsport.com.ar/files/products/613fba44350f3-538699-500x500.jpg",
+        "stock": 61,
+        "categoria": "hombre"
+    },
+    {
+        "id": 9,
+        "titulo": "puma",
+        "nombre": "REMERA FELIPE PANTONE PUMA",
+        "precio": 5400,
+        "imagen": "https://www.digitalsport.com.ar/files/products/60be6a4beb259-528708-500x500.jpg",
+        "stock": 34,
+        "categoria": "mujer"
+    },
+    {
+        "id": 10,
+        "titulo": "champion",
+        "nombre": "REMERA CLASS LOGO DEPORTIVO CHAMPION",
+        "precio": 4999,
+        "imagen": "https://www.digitalsport.com.ar/files/products/613f57a5f2398-564784-500x500.jpg",
+        "stock": 60,
+        "categoria": "mujer"
+    },
+    {
+        "id": 11,
+        "titulo": "champion",
+        "nombre": "REMERA SURF RIDER LOGO DEPORTIVO CHAMPION",
+        "precio": 4300,
+        "imagen": "https://www.digitalsport.com.ar/files/products/619d549caf5b2-564747-500x500.jpg",
+        "stock": 120,
+        "categoria": "hombre"
     }
 ]

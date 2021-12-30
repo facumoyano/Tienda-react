@@ -3,11 +3,11 @@ import React from 'react'
 import { useState } from 'react';
 
 
-const ItemCount = () => {
+const ItemCount = ({stock}) => {
     const [count, setCount] = useState(1);
     
     function sumar () {
-        if(count < 10) {
+        if(count < stock) {
             setCount(count + 1)
         }
         

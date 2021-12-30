@@ -1,8 +1,8 @@
-import { Box, Button, CircularProgress, Typography } from '@mui/material'
+import { CircularProgress } from '@mui/material'
 import React from 'react'
-import ItemCount from './ItemCount'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import ItemDetail from './ItemDetail'
 
 const ItemDetailContainer = ( ) => {
     const {id} = useParams();
@@ -32,52 +32,9 @@ const ItemDetailContainer = ( ) => {
         <div  className="spinner">
         {
             spinner ? 
-            <Box sx={{
-                display: 'flex', 
-                justifyContent: 'space-evenly',
-                my: 5
-            }}>
-
-            <Box>
-                <img  src={item.imagen} alt='asd'/>
-            </Box>
-            <Box sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignContent: 'center',
-                p: 10,
-                textAlign: 'center'
-            }}>
-                <Typography variant='h4' sx={{
-                    py: 1
-                }}>
-                    {item.nombre}
-                </Typography>
-                <Typography variant='h6' sx={{
-                    py: 1
-                }}>
-                    ${item.precio}
-                </Typography>
-                <Typography variant='h6' sx={{
-                    py: 0.3
-                }}>
-                    Stock: {item.stock}
-                </Typography>
-                <Button variant='contained' sx={{
-                    margin: 1
-                }}>
-                    Añadir al carrito
-                </Button>
-                <Button variant='outlined' sx={{
-                    margin: 1
-                }}>
-                    Regresar
-                </Button>
-                <ItemCount />
-            </Box>
+            <ItemDetail item={item} />
             
             
-        </Box>
         :
         <CircularProgress/>
         }

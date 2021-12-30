@@ -18,6 +18,7 @@ const useStyle = makeStyles({
     }
 })
 
+
 const ItemListContainer = ({ titulo }) => {
     const classes = useStyle()
     return (
@@ -26,7 +27,6 @@ const ItemListContainer = ({ titulo }) => {
                 {titulo}
             </Typography>
             <ItemList />
-            
         </Box>
     )
 }

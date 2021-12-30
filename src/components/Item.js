@@ -13,7 +13,8 @@ const Item = ( {item} ) => {
     return ( 
         <>
         
-            <Card sx={{ maxWidth: 345 }} >
+            <Card sx={{ maxWidth: 500
+             }} >
                 <CardMedia
                   component="img"
                   height="240"
@@ -21,19 +22,21 @@ const Item = ( {item} ) => {
                   alt="green iguana"
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography gutterBottom variant="h5" component="div" sx={{
+                    fontWeight: 700
+                  }}>
                     {item.titulo}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     {item.nombre}
                   </Typography>
-                  <Typography variant="body2" color="primary" pt={2}>
-                    {item.precio}
+                  <Typography variant="body1" color="primary" pt={2}>       
+                    ${item.precio}
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Link to={`/ItemDetail/${item.id}`}>
-                    <Button size="small">Ver detalles</Button>
+                  <Link to={`/Item/${item.id}`} className='link'>
+                    <Button size="small" variant='contained'>Ver detalles</Button>
                   </Link>
                 </CardActions>
               </Card>

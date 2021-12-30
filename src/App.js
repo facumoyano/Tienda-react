@@ -3,8 +3,9 @@ import { ThemeProvider } from "@mui/material";
 import theme from "./temaConfig";
 import NavBar from "./components/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
 import ItemDetailContainer from "./components/ItemDetailContainer";
+import Categories from "./components/Categories";
+import ItemListContainer from "./components/ItemListContainer";
 
 
 
@@ -14,10 +15,13 @@ function App() {
     <ThemeProvider theme={ theme }>
       <NavBar />
     <Routes>
-      <Route index path="/" element={<Home />} >
+      <Route index path="/" element={<ItemListContainer titulo="ORIGIN Clothes"/>} >
         
       </Route>
-      <Route path="/ItemDetail/:id" element={<ItemDetailContainer />}>
+      <Route path="/Item/:id" element={<ItemDetailContainer />}>
+        
+      </Route>
+      <Route path="/category/:catId" element={<Categories />}>
         
       </Route>
     </Routes>

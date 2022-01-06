@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react';
 
 
-const ItemCount = ({stock}) => {
+const ItemCount = ({stock, onAdd}) => {
     const [count, setCount] = useState(1);
     
     function sumar () {
@@ -21,6 +21,7 @@ const ItemCount = ({stock}) => {
     
 
     return (
+        <>
         <Box sx={{
             display: 'flex',
             justifyContent: 'center',
@@ -44,6 +45,12 @@ const ItemCount = ({stock}) => {
                 </CardContent>
             
         </Box>
+                <Button variant='contained' sx={{
+                    margin: 1
+                }} onClick={onAdd}>
+                    Añadir al carrito
+                </Button>
+        </>
     )
 }
 

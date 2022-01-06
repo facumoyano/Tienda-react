@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import Categories from "./components/Categories";
 import ItemListContainer from "./components/ItemListContainer";
+import Cart from "./components/Cart";
 
 
 
@@ -22,6 +23,9 @@ function App() {
         
       </Route>
       <Route path="/category/:catId" element={<Categories />}>
+        
+      </Route>
+      <Route path="/cart" element={<Cart />}>
         
       </Route>
     </Routes>

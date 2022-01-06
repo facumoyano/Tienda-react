@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Button, Typography } from '@mui/material'
 import ItemCount from './ItemCount'
+import { Link } from 'react-router-dom'
 
 const ItemDetail = ({item}) => {
+    const [add, setAdd] = useState(false)
+
+    const onAdd = () => {
+        setAdd(true)
+    }
+    const back = () => {
+        setAdd(false)
+    }
+    
+
+
     return (
         <div>
             <Box sx={{
@@ -36,17 +48,32 @@ const ItemDetail = ({item}) => {
                 }}>
                     Stock: {item.stock}
                 </Typography>
-                <Button variant='contained' sx={{
-                    margin: 1
-                }}>
-                    Añadir al carrito
-                </Button>
-                <Button variant='outlined' sx={{
-                    margin: 1
-                }}>
+                {
+                    !add && 
+                    <ItemCount stock={item.stock} onAdd={onAdd}/>
+                }
+                {
+                    add &&
+                    <Box sx={{
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}>
+                    <Link to="/cart" className='link'>
+                        <Button variant='contained' sx={{
+                            margin: 1,
+                            width: '100%'
+                        }} >
+                        Finalizar compra
+                        </Button>
+                    </Link>
+                    <Button variant='outlined' sx={{
+                        margin: 1,
+                        width: '100%'
+                    }} onClick={back}>
                     Regresar
-                </Button>
-                <ItemCount stock={item.stock} />
+                    </Button>
+                    </Box> 
+                }
             </Box>
             
             

@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { Box, Button, Typography } from '@mui/material'
 import ItemCount from './ItemCount'
 import { Link } from 'react-router-dom'
+import { useCartContext } from '../context/CartContext'
 
 const ItemDetail = ({item}) => {
+    const { addToCart } = useCartContext()
     const [add, setAdd] = useState(false)
 
     const onAdd = () => {
@@ -55,20 +57,20 @@ const ItemDetail = ({item}) => {
                 {
                     add &&
                     <Box sx={{
-                        display: 'flex',
-                        flexDirection: 'column'
+                            display: 'flex',
+                            flexDirection: 'column'
                     }}>
                     <Link to="/cart" className='link'>
                         <Button variant='contained' sx={{
-                            margin: 1,
-                            width: '100%'
-                        }} >
+                                margin: 1,
+                                width: '100%'
+                        }} onClick={() => addToCart(item)}>
                         Finalizar compra
                         </Button>
                     </Link>
                     <Button variant='outlined' sx={{
-                        margin: 1,
-                        width: '100%'
+                            margin: 1,
+                            width: '100%'
                     }} onClick={back}>
                     Regresar
                     </Button>

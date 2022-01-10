@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Item from './Item'
-import { Box } from '@mui/material'
+import { Box, CircularProgress } from '@mui/material'
 import { Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { grey, red } from '@mui/material/colors'
@@ -23,7 +23,7 @@ const Categories = () => {
     const classes = useStyle()
     const {catId} = useParams()
     const [producto, setProductos] = useState([])
-
+    const [spinner, setSpinner] = useState(false)
     
     useEffect(() => {
         const getItems = async () => {
@@ -31,11 +31,18 @@ const Categories = () => {
             const prod = await data.json();
             
             const filter = prod.filter((product) => product.categoria === `${catId}`);
+            setTimeout(() => {
+                
                 setProductos(filter)
+                setSpinner(true)
+            }, 3000);
    
             
         }
             getItems()
+            return () => {
+                setSpinner(false)
+            }
     }, [catId])
 
 
@@ -44,12 +51,17 @@ const Categories = () => {
         <Typography variant="h1" className={classes.titulo}>
             ORIGIN Clothes
         </Typography>
+        
          <Box sx={{ display: 'grid',
         gridTemplateColumns: '1fr 1fr 1fr',
         gap: "30px",
         justifyItems: "center" 
         }}>
-            {producto.map(p => <Item item={p} key={p.id}></Item>)}
+            {spinner ? producto.map(p => <Item item={p} key={p.id}></Item>)
+            : <div className="spinner1">
+
+            <CircularProgress/>
+        </div>}
             
         </Box>
         </>

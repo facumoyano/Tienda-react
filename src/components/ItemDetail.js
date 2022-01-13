@@ -1,87 +1,100 @@
-import React, { useState } from 'react'
-import { Box, Button, Typography } from '@mui/material'
-import ItemCount from './ItemCount'
-import { Link } from 'react-router-dom'
-import { useCartContext } from '../context/CartContext'
+import React, { useState } from "react";
+import { Box, Button, Typography } from "@mui/material";
+import ItemCount from "./ItemCount";
+import { Link } from "react-router-dom";
+import { useCartContext } from "../context/CartContext";
+import { makeStyles } from "@mui/styles";
 
-const ItemDetail = ({item}) => {
-    const { addToCart } = useCartContext()
-    const [add, setAdd] = useState(false)
+const useStyles = makeStyles({
+  container: {
+    display: "flex",
+    justifyContent: "space-evenly",
+    my: 5,
+  },
+  infoContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignContent: "center",
+    justifyContent: "center",
+    padding: 10,
+    textAlign: "center",
+  },
+  button: {
+    width: "100%",
+    fontSize: "50px",
+  },
+});
 
-    const onAdd = () => {
-        setAdd(true)
-    }
-    const back = () => {
-        setAdd(false)
-    }
-    
+const ItemDetail = ({ item }) => {
+  const classes = useStyles();
 
+  const { addToCart } = useCartContext();
+  const [add, setAdd] = useState(false);
 
-    return (
-        <div>
-            <Box sx={{
-                display: 'flex', 
-                justifyContent: 'space-evenly',
-                my: 5
-            }}>
+  const onAdd = () => {
+    setAdd(true);
+  };
+  const back = () => {
+    setAdd(false);
+  };
 
-            <Box>
-                <img  src={item.imagen} alt='asd'/>
-            </Box>
-            <Box sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignContent: 'center',
-                p: 10,
-                textAlign: 'center'
-            }}>
-                <Typography variant='h4' sx={{
-                    py: 1
-                }}>
-                    {item.nombre}
-                </Typography>
-                <Typography variant='h6' sx={{
-                    py: 1
-                }}>
-                    ${item.precio}
-                </Typography>
-                <Typography variant='h6' sx={{
-                    py: 0.3
-                }}>
-                    Stock: {item.stock}
-                </Typography>
-                {
-                    !add && 
-                    <ItemCount stock={item.stock} onAdd={onAdd}/>
-                }
-                {
-                    add &&
-                    <Box sx={{
-                            display: 'flex',
-                            flexDirection: 'column'
-                    }}>
-                    <Link to="/cart" className='link'>
-                        <Button variant='contained' sx={{
-                                margin: 1,
-                                width: '100%'
-                        }} onClick={() => addToCart(item)}>
-                        Finalizar compra
-                        </Button>
-                    </Link>
-                    <Button variant='outlined' sx={{
-                            margin: 1,
-                            width: '100%'
-                    }} onClick={back}>
-                    Regresar
-                    </Button>
-                    </Box> 
-                }
-            </Box>
-            
-            
+  return (
+    <div>
+      <Box className={classes.container}>
+        <Box>
+          <img src={item.imagen} alt="asd" />
         </Box>
-        </div>
-    )
-}
+        <Box className={classes.infoContainer}>
+          <Typography
+            variant="h4"
+            sx={{
+              py: 1,
+            }}
+          >
+            {item.nombre}
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              py: 1,
+            }}
+          >
+            ${item.precio}
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              py: 0.3,
+            }}
+          >
+            Stock: {item.stock}
+          </Typography>
+          {!add && <ItemCount stock={item.stock} onAdd={onAdd} />}
+          {add && (
+            <Box>
+              <Link to="/cart" className="link" sx={{ margin: "5px" }}>
+                <Button
+                  className={classes.button}
+                  variant="contained"
+                  onClick={() => addToCart(item)}
+                >
+                  Finalizar compra
+                </Button>
+              </Link>
+              <Button
+                variant="outlined"
+                className={classes.button}
+                onClick={back}
+                sx={{ mt: "10px" }}
+              >
+                Regresar
+              </Button>
+            </Box>
+          )}
+        </Box>
+      </Box>
+    </div>
+  );
+};
 
-export default ItemDetail
+export default ItemDetail;

@@ -6,37 +6,46 @@ export const useCartContext = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [items, setItems] = useState([]);
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
+  
+  const añadirAlCarrito = (item) => {
+    if(!isInCart(item.id)){
 
-  const addToCart = (item) => {
-    if (!items.includes(item)) {
-      return setItems([...items, item]);
-    } else {
-      return false;
+      setItems([...items, { cantidad: count, ...item}]);
     }
   };
+  
 
-  const contador = (count) => {
-    setCount(count)
+  const contador = (counter) => {
+    setCount(counter += count)
   }
-  console.log(count)
+ 
+
 
   const removeItem = (id) => {
     const remove = items.filter((item) => item.id !== id);
     setItems(remove);
+    setCount(count)
   };
   const emptyItems = () => {
     setItems([]);
+    setCount(0);
   };
-  console.log(items);
+
+  const isInCart = (itemId) => {
+    return !!items.find(item => item.id === itemId);
+}
+ 
   return (
     <CartContext.Provider
       value={{
         items,
-        addToCart,
+        
         removeItem,
         emptyItems,
-        contador
+        contador,
+        count,
+        añadirAlCarrito
       }}
     >
       {children}

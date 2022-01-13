@@ -1,47 +1,57 @@
-import { Button, Typography } from "@mui/material";
-import { Box } from "@mui/system";
 import React from "react";
 import { useCartContext } from "../context/CartContext";
-import { makeStyles } from "@mui/styles";
 
-const useStyles = makeStyles({
-  containerCart: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    margin: "20px",
-  },
-  infoContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    margin: "20px",
-  },
-});
+import DeleteIcon from '@mui/icons-material/Delete';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { Button } from "@mui/material";
+
+
 
 const Cart = () => {
-  const classes = useStyles();
+  
 
-  const { items, emptyItems, removeItem, count } = useCartContext();
-  console.log(count)
+  const { items, count, removeItem, emptyItems } = useCartContext();
  
   return (
-    <Box className={classes.containerCart}>
-      {items.map((item) => (
-        <Box className={classes.infoContainer} key={item.id}>
-          <img src={item.imagen} alt={item.nombre} className="img-cart" />
-          <Typography variant="h6" sx={{ margin: "0 20px" }}>
-            {item.nombre}
-          </Typography>
-          <Typography variant="h6">${item.precio}</Typography>
-          <Typography variant="h6">${count}</Typography>
-          
-          <Button onClick={() => removeItem(item.id)}> X </Button>
-        </Box>
-      ))}
-      <Button onClick={emptyItems}>Vaciar carrito</Button>
-    </Box>
+    <>
+    <TableContainer component={Paper} sx={{margin: '20px'}}>
+    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <TableHead>
+        <TableRow>
+          <TableCell>Producto</TableCell>
+          <TableCell align="left"></TableCell>
+          <TableCell align="left">Precio</TableCell>
+          <TableCell align="left">Cantidad</TableCell>
+          <TableCell align="left">Eliminar</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {items.map((item) => (
+          <TableRow
+            key={item.id}
+            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+          >
+            <TableCell component="th" scope="row">
+              <img src={item.imagen} alt={item.nombre} className="img-cart"></img>
+            </TableCell>
+            <TableCell align="left">{item.nombre}</TableCell>
+            <TableCell align="left">${item.precio}</TableCell>
+            <TableCell align="left">{count}</TableCell>
+            <TableCell align="left"><DeleteIcon  onClick={() => removeItem(item.id)} sx={{cursor: 'pointer'}}/></TableCell>
+            
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  </TableContainer>
+  <Button variant="contained" onClick={emptyItems}>Vaciar carrito</Button>
+  </>
   );
 };
 

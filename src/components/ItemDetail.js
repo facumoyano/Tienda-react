@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 const ItemDetail = ({ item }) => {
   const classes = useStyles();
 
-  const { addToCart } = useCartContext();
+  const { añadirAlCarrito } = useCartContext();
   const [add, setAdd] = useState(false);
 
   const onAdd = () => {
@@ -76,7 +76,7 @@ const ItemDetail = ({ item }) => {
                 <Button
                   className={classes.button}
                   variant="contained"
-                  onClick={() => addToCart(item)}
+                  onClick={() => añadirAlCarrito(item)}
                 >
                   Finalizar compra
                 </Button>

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBar = () => {
   const classes = useStyles();
-  const { cantidad } = useCartContext();
+  const { count } = useCartContext();
 
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -64,7 +64,7 @@ const NavBar = () => {
             <Link to="/cart" className="link">
               <CartWidget />
             </Link>
-            <p> {cantidad} </p>
+            <p> {count} </p>
           </Box>
         </Toolbar>
       </AppBar>

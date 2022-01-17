@@ -6,7 +6,8 @@ export const useCartContext = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [items, setItems] = useState([]);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0); 
+
   
   const añadirAlCarrito = (item) => {
     if(!isInCart(item.id)){
@@ -14,12 +15,30 @@ export const CartProvider = ({ children }) => {
       setItems([...items, { cantidad: count, ...item}]);
     }
   };
-  
+
+  const isInCart = (itemId) => {
+    return !!items.find(item => item.id === itemId);
+  }
+
+  function cartLenght(){
+    let quantity = 0;
+    items.forEach(i=>{
+        quantity = quantity + i.cantidad;
+    })
+    return(quantity)
+
+}
 
   const contador = (counter) => {
-    setCount(counter += count)
+    setCount(counter)
   }
- 
+
+  function getTotal(){
+    let total = 0;
+    items.forEach(i=>{
+        total = total + (i.cantidad*i.precio);
+    })
+    return(Number(total))}
 
 
   const removeItem = (id) => {
@@ -32,9 +51,6 @@ export const CartProvider = ({ children }) => {
     setCount(0);
   };
 
-  const isInCart = (itemId) => {
-    return !!items.find(item => item.id === itemId);
-}
  
   return (
     <CartContext.Provider
@@ -45,7 +61,9 @@ export const CartProvider = ({ children }) => {
         emptyItems,
         contador,
         count,
-        añadirAlCarrito
+        añadirAlCarrito,
+        cartLenght,
+        getTotal
       }}
     >
       {children}

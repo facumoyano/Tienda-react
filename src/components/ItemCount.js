@@ -54,7 +54,7 @@ const ItemCount = ({ stock, onAdd }) => {
           margin: 1,
         }}
         onClick={() => {onAdd();
-        contador(count)}}
+                        contador(count)}}
         
       >
         Añadir al carrito

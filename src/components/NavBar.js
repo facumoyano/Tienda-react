@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBar = () => {
   const classes = useStyles();
-  const { items, cartLenght } = useCartContext();
+  const { cartLenght } = useCartContext();
 
 
   const [anchorEl, setAnchorEl] = useState(null);

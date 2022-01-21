@@ -10,15 +10,22 @@ export const CartProvider = ({ children }) => {
 
   
   const añadirAlCarrito = (item) => {
-    if(!isInCart(item.id)){
-
+    if(isInCart(item.id)){
+      setItems(items.map (cartItem => {
+        if (cartItem.id === item.id) {
+          return {...cartItem, cantidad: count + cartItem.cantidad}
+        }
+      }))
+    } else {
       setItems([...items, { cantidad: count, ...item}]);
+
     }
   };
 
   const isInCart = (itemId) => {
     return !!items.find(item => item.id === itemId);
   }
+  console.log(items)
 
   function cartLenght(){
     let quantity = 0;

@@ -10,6 +10,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { items, removeItem, emptyItems, getTotal, cartLenght } =
@@ -71,6 +72,11 @@ const Cart = () => {
           <Button variant="contained" onClick={emptyItems}>
             Vaciar carrito
           </Button>
+          <Link to='/checkout' className="textDecoration">
+            <Button variant="outlined">
+              Terminar compra
+            </Button>
+          </Link>
           <p>Total: {getTotal()} </p>
         </div>
       )}

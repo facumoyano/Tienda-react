@@ -9,23 +9,24 @@ export const CartProvider = ({ children }) => {
   const [count, setCount] = useState(0); 
 
   
-  const añadirAlCarrito = (item) => {
-    if(isInCart(item.id)){
-      setItems(items.map (cartItem => {
-        if (cartItem.id === item.id) {
-          return {...cartItem, cantidad: count + cartItem.cantidad}
-        }
-      }))
+  const añadirAlCarrito = item => {
+  
+    if (isInCart(item.id)) {
+      setItems(
+        items.map(cartItem => {
+          if (cartItem.id === item.id) {
+            return { ...cartItem, cantidad: count + cartItem.cantidad };
+          } else {return cartItem}
+        })
+      );
     } else {
-      setItems([...items, { cantidad: count, ...item}]);
-
+      setItems([...items, { cantidad: count, ...item }]);
     }
   };
 
   const isInCart = (itemId) => {
     return !!items.find(item => item.id === itemId);
   }
-  console.log(items)
 
   function cartLenght(){
     let quantity = 0;

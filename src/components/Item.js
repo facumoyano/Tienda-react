@@ -14,7 +14,11 @@ const Item = ( {item} ) => {
         <>
         
             <Card sx={{ maxWidth: 300,
-                        width: 300
+                        width: 300,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        textAlign: 'center'
              }} >
                 <CardMedia
                   component="img"

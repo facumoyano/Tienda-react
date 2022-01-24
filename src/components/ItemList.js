@@ -15,6 +15,13 @@ const useStyles = makeStyles({
     gap: "30px",
     justifyItems: "center",
   },
+  "@media (max-width: 768px)": {
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center'
+    }
+  }
 });
 
 const ItemList = () => {

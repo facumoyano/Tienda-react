@@ -23,6 +23,16 @@ const useStyles = makeStyles({
     width: "100%",
     fontSize: "50px",
   },
+  "@media (max-width: 768px)": {
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center'
+    },
+    imgDetail: {
+      height: '300px'
+    }
+  }
 });
 
 const ItemDetail = ({ item }) => {
@@ -42,7 +52,7 @@ const ItemDetail = ({ item }) => {
     <div>
       <Box className={classes.container}>
         <Box>
-          <img src={item.imagen} alt="asd" />
+          <img src={item.imagen} alt="asd" className={classes.imgDetail} />
         </Box>
         <Box className={classes.infoContainer}>
           <Typography

@@ -47,3 +47,14 @@ code {
   height: 100px;
   max-width: 100px;
 }
+.total {
+  font-size: 20px;
+  font-weight: 600
+}
+.modalText {
+  line-height: 25px;
+}
+.iconDrawer {
+  text-decoration: none;
+  color: blue;
+}

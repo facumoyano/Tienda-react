@@ -1,14 +1,32 @@
 import React  from 'react'
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import { makeStyles } from "@mui/styles";
+
+const useStyle = makeStyles({
+  btnDetailContainer: {
+    display: 'inline-block',
+    width: '100%',
+    margin: '15px 0',
+  },
+  btnDetail: {
+    width: '90%',
+    padding: '20px 0'
+  },
+  "@media (max-width: 768px)": {
+    btnDetailContainer: {
+      width: '90%'
+    }
+  }
+});
 
 
 const Item = ( {item} ) => {
+  const classes = useStyle();
 
     return ( 
         <>
@@ -39,11 +57,11 @@ const Item = ( {item} ) => {
                     ${item.precio}
                   </Typography>
                 </CardContent>
-                <CardActions>
+                <div className={classes.btnDetailContainer}>
                   <Link to={`/Item/${item.id}`} className='link'>
-                    <Button size="small" variant='contained'>Ver detalles</Button>
+                    <Button size="medium" variant='contained' className={classes.btnDetail}>Ver detalles</Button>
                   </Link>
-                </CardActions>
+                </div>
               </Card>
             
         </>

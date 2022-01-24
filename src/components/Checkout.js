@@ -2,26 +2,50 @@ import React from "react";
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
 import { useCartContext } from "../context/CartContext";
-
+import { makeStyles } from "@mui/styles";
 import db from "../firebase/firebase";
 import { Button, FormControl, InputLabel, Input, Alert } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
+import { red } from "@mui/material/colors";
+
+const useStyles = makeStyles({
+  
+    formContainer: {
+      display: "flex",
+      flexDirection: "column",
+      width: "50%",
+      margin: "0 auto",
+    },
+    span: {
+      fontWeight: 700,
+      color: red[400],
+      textDecoration: 'underline'
+    },
+    buttonCenter: {
+      width: '100%'
+    },
+    "@media (max-width: 768px)": {
+      formContainer: {
+        width: '90%'
+      }
+    }
+  
+});
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
 
 const Checkout = () => {
+  const classes = useStyles();
   const { items, getTotal, emptyItems } = useCartContext();
   const [error, setError] = useState(false);
   const [open, setOpen] = useState(false);
@@ -77,14 +101,7 @@ const Checkout = () => {
     setBuyer({ ...buyer, [e.target.name]: e.target.value });
   };
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        width: "50%",
-        margin: "0 auto",
-      }}
-    >
+    <Box className={classes.formContainer}>
       <FormControl
         onSubmit={handleSubmit}
         sx={{
@@ -167,16 +184,18 @@ const Checkout = () => {
       >
         <Box sx={style}>
           <h2 id="parent-modal-title">Gracias por tu compra {buyer.nombre} </h2>
-          <p id="parent-modal-description">
-            En los próximos minutos recibirá un mail a {buyer.email} con la
-            orden de compra {idCompra}
+          <p id="parent-modal-description" className="modalText">
+            En los próximos minutos recibirás un mail a <span className={classes.span}>{buyer.email}</span> con la
+            orden de compra <span className={classes.span}>{idCompra}</span>
           </p>
-          <p id="parent-modal-description">Que lo disfrutes!</p>
+          <p>Que lo disfrutes!</p>
+          <div className={classes.buttonCenter}>
           <Link to="/" className="link">
-              <Button variant="outlined" onClick={emptyItems}>
+              <Button variant="contained" onClick={emptyItems} sx={{width: '100%'}}>
                   Volver a inicio
               </Button>
           </Link>
+          </div>
         </Box>
       </Modal>
     </Box>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useCartContext } from "../context/CartContext";
-
+import { makeStyles } from "@mui/styles";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -12,7 +12,17 @@ import Paper from "@mui/material/Paper";
 import { Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
+const useStyles = makeStyles({
+  buttonsContainer: {
+    display: "flex",
+    marginTop: '20px'
+    }
+});
+
+
 const Cart = () => {
+  const classes = useStyles();
+
   const { items, removeItem, emptyItems, getTotal, cartLenght } =
     useCartContext();
 
@@ -60,6 +70,7 @@ const Cart = () => {
                     <TableCell align="left">{item.cantidad}</TableCell>
                     <TableCell align="left">
                       <DeleteIcon
+                        color="primary"
                         onClick={() => removeItem(item.id)}
                         sx={{ cursor: "pointer" }}
                       />
@@ -69,7 +80,9 @@ const Cart = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <Button variant="contained" onClick={emptyItems}>
+          <p className="total">Total: ${getTotal()} </p>
+          <div className={classes.buttonsContainer}>
+          <Button variant="contained" onClick={emptyItems} sx={{marginRight: '20px'}}>
             Vaciar carrito
           </Button>
           <Link to='/checkout' className="textDecoration">
@@ -77,7 +90,7 @@ const Cart = () => {
               Terminar compra
             </Button>
           </Link>
-          <p>Total: {getTotal()} </p>
+          </div>
         </div>
       )}
     </>

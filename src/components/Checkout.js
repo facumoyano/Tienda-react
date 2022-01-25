@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useCartContext } from "../context/CartContext";
 import { makeStyles } from "@mui/styles";
 import db from "../firebase/firebase";
-import { Button, FormControl, InputLabel, Input, Alert } from "@mui/material";
+import { Button, FormControl, InputLabel, Input } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
@@ -45,17 +45,20 @@ const style = {
 };
 
 const Checkout = () => {
+  const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
   const classes = useStyles();
   const { items, getTotal, emptyItems } = useCartContext();
-  const [error, setError] = useState(false);
   const [open, setOpen] = useState(false);
   const [idCompra, setIdCompra] = useState("");
+
   const handleOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
+  
   const [buyer, setBuyer] = useState({
     nombre: "",
     email: "",
@@ -73,8 +76,9 @@ const Checkout = () => {
   };
 
   const handleSubmit = async (e) => {
+    
     try {
-      if (buyer.nombre && buyer.email && buyer.telefono) {
+      if (buyer.nombre && buyer.email && buyer.telefono && emailRegex.test(buyer.email)) {
         e.preventDefault();
 
         items.forEach((item) => {
@@ -86,12 +90,8 @@ const Checkout = () => {
           });
           handleOpen();
         });
-      } else {
-        setError(true);
-
-        return;
-      }
-      setError(false);
+      } 
+      
       
     } catch (err) {
       console.error(err);
@@ -103,7 +103,6 @@ const Checkout = () => {
   return (
     <Box className={classes.formContainer}>
       <FormControl
-        onSubmit={handleSubmit}
         sx={{
           margin: "30px 0",
         }}
@@ -145,7 +144,7 @@ const Checkout = () => {
           onChange={handleSubmitChange}
         />
       </FormControl>
-      {buyer.nombre && buyer.email && buyer.telefono ? 
+      {buyer.nombre && buyer.email && buyer.telefono && emailRegex.test(buyer.email) ? 
       <Button
         variant="contained"
         onClick={(e) => {
@@ -173,9 +172,7 @@ const Checkout = () => {
        Finalizar compra
      </Button>
       }
-      {error && (
-        <Alert severity="error">Todos los campos son obligatorios</Alert>
-      )}
+      
       <Modal
         open={open}
         onClose={handleClose}

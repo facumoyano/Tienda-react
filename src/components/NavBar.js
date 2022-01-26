@@ -18,7 +18,7 @@ import { useCartContext } from "../context/CartContext";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { red } from "@mui/material/colors";
-import CategoryIcon from '@mui/icons-material/Category';
+import CategoryIcon from "@mui/icons-material/Category";
 
 const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
@@ -36,8 +36,8 @@ const useStyles = makeStyles((theme) => ({
   },
   buttons: {
     color: "primary",
-    padding: '30px 0',
-    fontSize:'15px'
+    padding: "30px 0",
+    fontSize: "15px",
   },
   "@media (max-width: 768px)": {
     menuResponsive: {
@@ -140,9 +140,9 @@ const NavBar = () => {
               <Button
                 onClick={openMenu}
                 className={classes.buttons}
-                sx={{margin: '20px 0'}}
+                sx={{ margin: "20px 0" }}
               >
-                <CategoryIcon color="primary" sx={{marginRight: '10px'}} />
+                <CategoryIcon color="primary" sx={{ marginRight: "10px" }} />
                 Categorías
               </Button>
               <Menu
@@ -162,12 +162,10 @@ const NavBar = () => {
               </Menu>
               <div className={classes.cart}>
                 <Link to="/cart" color="primary" className={classes.cartWidget}>
-                <Button
-                className={classes.buttons}
-                sx={{margin: '20px 0'}}
-              ><CartWidget  />
-                Carrito
-              </Button>
+                  <Button className={classes.buttons} sx={{ margin: "20px 0" }}>
+                    <CartWidget />
+                    Carrito
+                  </Button>
                 </Link>
                 <p className={classes.cartLenght}> {cartLenght()} </p>
               </div>

@@ -2,6 +2,7 @@ import { Box, CardContent, Button, Typography } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import { useCartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 const ItemCount = ({ stock, onAdd }) => {
   const { contador } = useCartContext();
@@ -18,9 +19,11 @@ const ItemCount = ({ stock, onAdd }) => {
       setCount(count - 1);
     }
   }
-
+  console.log(stock)
   return (
     <>
+          {stock ?
+          <>
       <Box
         sx={{
           display: "flex",
@@ -48,17 +51,35 @@ const ItemCount = ({ stock, onAdd }) => {
           </Button>
         </CardContent>
       </Box>
+      
+      
       <Button
         variant="contained"
         sx={{
           margin: 1,
         }}
-        onClick={() => {onAdd();
-                        contador(count)}}
-        
+        onClick={() => {
+          onAdd();
+          contador(count);
+        }}
       >
         Añadir al carrito
       </Button>
+      </>
+      
+      :
+      <Link to="/" className="link">
+      <Button
+      variant="contained"
+      sx={{
+        margin: 1,
+        width: '100%'
+      }}
+    >
+      Regresar
+    </Button>
+    </Link>
+      }
     </>
   );
 };

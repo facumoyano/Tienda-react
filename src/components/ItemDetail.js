@@ -52,7 +52,7 @@ const ItemDetail = ({ item }) => {
     <div>
       <Box className={classes.container}>
         <Box>
-          <img src={item.imagen} alt="asd" className={classes.imgDetail} />
+          <img src={item.imagen} alt={item.titulo} className={classes.imgDetail} />
         </Box>
         <Box className={classes.infoContainer}>
           <Typography

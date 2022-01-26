@@ -1,4 +1,3 @@
-
 import React from "react";
 import { makeStyles } from "@mui/styles";
 import { red } from "@mui/material/colors";
@@ -10,18 +9,16 @@ const useStyle = makeStyles({
     color: red[400],
     fontWeight: "700",
     textAlign: "center",
-    fontSize: '50px',
-    margin: '50px 0'
-  }
+    fontSize: "50px",
+    margin: "50px 0",
+  },
 });
 
 const ItemListContainer = ({ titulo }) => {
   const classes = useStyle();
   return (
     <Box>
-      <h1  className={classes.titulo}>
-        {titulo}
-      </h1>
+      <h1 className={classes.titulo}>{titulo}</h1>
       <ItemList />
     </Box>
   );

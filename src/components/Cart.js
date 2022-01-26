@@ -15,10 +15,9 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles({
   buttonsContainer: {
     display: "flex",
-    marginTop: '20px'
-    }
+    marginTop: "20px",
+  },
 });
-
 
 const Cart = () => {
   const classes = useStyles();
@@ -82,14 +81,16 @@ const Cart = () => {
           </TableContainer>
           <p className="total">Total: ${getTotal()} </p>
           <div className={classes.buttonsContainer}>
-          <Button variant="contained" onClick={emptyItems} sx={{marginRight: '20px'}}>
-            Vaciar carrito
-          </Button>
-          <Link to='/checkout' className="textDecoration">
-            <Button variant="outlined">
-              Terminar compra
+            <Button
+              variant="contained"
+              onClick={emptyItems}
+              sx={{ marginRight: "20px" }}
+            >
+              Vaciar carrito
             </Button>
-          </Link>
+            <Link to="/checkout" className="textDecoration">
+              <Button variant="outlined">Terminar compra</Button>
+            </Link>
           </div>
         </div>
       )}

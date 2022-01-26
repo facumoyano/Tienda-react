@@ -17,11 +17,11 @@ const useStyles = makeStyles({
   },
   "@media (max-width: 768px)": {
     container: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center'
-    }
-  }
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+  },
 });
 
 const ItemList = () => {

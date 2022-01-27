@@ -1,4 +1,5 @@
 Sobre el proyecto
+
 Ecommerce desarrollado en React como parte del proyecto correspondiente al curso de CoderHouse.
 
 La navegación incluye:

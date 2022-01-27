@@ -5,10 +5,14 @@ Ecommerce desarrollado en React como parte del proyecto correspondiente al curso
 La navegación incluye:
 
 Home con productos
-Pantalla de producto con detalle
-Pantalla de categorías
-Pantalla de carrito
-Formulario de finalización de compra
+
+-Pantalla de producto con detalle
+
+-Pantalla de categorías
+
+-Pantalla de carrito
+
+-Formulario de finalización de compra
 
 El usuario puede agregar un producto al carrito desde el detalle del producto.
 
